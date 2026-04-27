@@ -1,7 +1,6 @@
 import type { Request, Response } from "express";
 import { Customer } from "../Models/Customer";
 
-
 export const updateCustomer = async (req: Request, res: Response) => {
   const id = req.params.id
   await Customer.update(req.body, { where: { id } })
