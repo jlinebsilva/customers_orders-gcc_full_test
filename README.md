@@ -112,7 +112,7 @@ A API utiliza autenticação JWT. Para acessar endpoints protegidos, inclua o to
 
 - **Método**: GET
 
-- **Endpoint**: `/customer`
+- **Endpoint**: `/customers`
 
 - **Autenticação**: Necessária
 
@@ -122,7 +122,7 @@ A API utiliza autenticação JWT. Para acessar endpoints protegidos, inclua o to
 
 - **Método**: PUT
 
-- **Endpoint**: `/customer/:id`
+- **Endpoint**: `/customers/:id`
 
 - **Autenticação**: Necessária
 
@@ -134,7 +134,7 @@ A API utiliza autenticação JWT. Para acessar endpoints protegidos, inclua o to
 
 - **Método**: DELETE
 
-- **Endpoint**: `/customer/:id`
+- **Endpoint**: `/customers/:id`
 
 - **Autenticação**: Necessária
 
@@ -184,6 +184,7 @@ A API utiliza autenticação JWT. Para acessar endpoints protegidos, inclua o to
 - [Tailwind CSS](https://tailwindcss.com/)
 - [axios](https://axios.rest/)
 - [React Router](https://reactrouter.com/)
+- [dotenv]
 
 ### BACKEND
 
