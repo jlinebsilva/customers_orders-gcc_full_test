@@ -3,7 +3,7 @@ import { Sequelize } from "sequelize";
 
 dotenv.config()
 
-const sequelizeTemp = new Sequelize(
+const sequelize_DBCheckBeforeConnection = new Sequelize(
     'postgres',
     process.env.DB_USER!,
     process.env.DB_PASSWORD!,
@@ -16,12 +16,12 @@ const sequelizeTemp = new Sequelize(
 
 async function createDatabaseIfNotExists() {
     try {
-        await sequelizeTemp.authenticate()
+        await sequelize_DBCheckBeforeConnection.authenticate()
         console.info("\n🔵 Conectado ao servidor PostgreSQL\n")
 
-        await sequelizeTemp.query(`CREATE DATABASE ${process.env.DB_NAME}`)
+        await sequelize_DBCheckBeforeConnection.query(`CREATE DATABASE ${process.env.DB_NAME}`)
         console.info(`\n🟢 Banco de dados "${process.env.DB_NAME}" criado com sucesso\n`)
-
+        
     } catch (err: any) {
         if (err.message.includes('already exists')) {
             console.info(`\n🟢 Banco de dados "${process.env.DB_NAME}" já existe\n`)
@@ -30,7 +30,7 @@ async function createDatabaseIfNotExists() {
         }
 
     } finally {
-        await sequelizeTemp.close()
+        await sequelize_DBCheckBeforeConnection.close()
     }
 }
 
