@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
+
+
+@theme {
+
+  --color-frozen_lake: #C4F5FC;
+  --color-pink: #FF848B;
+  --color-tangerine: #FF9770;
+  --color-royal_gold: #FFD670;
+  --color-lime_cream: #E9FF70;
+  --color-light_purple: #a5b4fc;
+  --color-violet_sense: #818cf8;
+
+
+  --font-primary: 'Segoe UI', system-ui, Roboto, sans-serif;
+
+}
+  
+
+@layer base {
+
+  :root {
+    font-family: var(--font-primary);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    margin: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+}
+
+
+@layer components {
+
+  .btn {
+    @apply py-1 px-1
+  }
+
+  .btn.edit {
+    @apply bg-frozen_lake
+  }
+
+  .btn.delete {
+    @apply bg-pink
+  }
+
+  /* FORMS & INPUT */
+
+  .forms {
+    @apply flex flex-col gap-4 
+  }
+
+  .label {
+    @apply size-3.5 font-semibold
+  }
+
+  .input {
+    @apply border border-gray-200 rounded-xl p-2
+  }
+
+  /* MESSAGES */
+
+  .message {
+    @apply text-xl font-semibold    
+  }
+
+  .message.error {
+    @apply text-pink
+  }
+
+}
+
+@layer utilities {}
