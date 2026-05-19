@@ -1,7 +1,22 @@
 import bcrypt from "bcryptjs";
+import crypto from 'crypto';
+import { config } from 'dotenv';
 import type { Request, Response } from "express";
+import fs from 'fs';
 import jwt from 'jsonwebtoken';
+import path from 'path';
 import { Customer } from "../Models/Customer";
+
+config();
+
+let JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+    JWT_SECRET = crypto.randomBytes(32).toString('hex');
+
+    const envPath = path.join(process.cwd(), '.env');
+    fs.appendFileSync(envPath, `\nJWT_SECRET=${JWT_SECRET}\n`);
+}
 
 export const register = async (req: Request, res: Response) => {
     const { password, ...rest } = req.body
@@ -22,9 +37,9 @@ export const login = async (req: Request, res: Response) => {
     const valid = await bcrypt.compare(password, customer.getDataValue("password"));
 
     if (!valid) return res.status(401).json({ msg: "Invalid password" });
-    const token = jwt.sign({ id: customer.id }, process.env.JWT_SECRET!, {
+    const token = jwt.sign({ id: customer.id }, JWT_SECRET!, {
         expiresIn: "1d",
     });
 
-    res.json({ token });
+    res.json({ token })
 }
